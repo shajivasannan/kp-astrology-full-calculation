@@ -490,10 +490,10 @@ export default function KPResults({
 
             {/* Event Promise Calculations Card rendering */}
             {(() => {
-              const rule = EVENT_RULES.find(r => r.id === selectedEventId)!;
+              const rule = EVENT_RULES.find(r => r.id === selectedEventId) || EVENT_RULES[0];
               const cuspInfo = result.cusps[rule.primaryCusp - 1]; // 0-indexed
               const cslName = cuspInfo.subLord;
-              const cslPlanet = result.planets.find(p => p.id === cslName)!;
+              const cslPlanet = result.planets.find(p => p.id === cslName) || result.planets[0];
               const cslSigs = result.significators[cslName]?.allList || [];
 
               const matchesPrimary = cslSigs.includes(rule.primaryCusp);
@@ -671,7 +671,7 @@ export default function KPResults({
 
                 {/* DBASP Support Check */}
                 {(() => {
-                  const mRule = EVENT_RULES.find(r => r.id === selectedEventId)!;
+                  const mRule = EVENT_RULES.find(r => r.id === selectedEventId) || EVENT_RULES[0];
                   const mdSigs = result.significators[activeDasha.md.toLowerCase()]?.allList || [];
                   const adSigs = result.significators[activeDasha.ad.toLowerCase()]?.allList || [];
 
@@ -706,7 +706,7 @@ export default function KPResults({
 
                 {/* Transit Activation triggers */}
                 {(() => {
-                  const rule = EVENT_RULES.find(r => r.id === selectedEventId)!;
+                  const rule = EVENT_RULES.find(r => r.id === selectedEventId) || EVENT_RULES[0];
                   // check if transit star lords touch native's natal significator planets
                   const natalMarriageSignificators = result.cusps[rule.primaryCusp - 1]?.longitude; // primary trigger
                   
