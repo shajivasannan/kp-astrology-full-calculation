@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", "Georgia", serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Premium Astrological Colors */
+  --color-background: oklch(0.18 0.03 270);
+  --color-foreground: oklch(0.95 0.01 90);
+  --color-card: oklch(0.21 0.04 270);
+  --color-muted: oklch(0.24 0.04 270);
+  --color-border: oklch(0.32 0.03 270);
+  --color-gold: oklch(0.82 0.12 85);
+  --color-gold-soft: oklch(0.88 0.07 90);
+  --color-primary: oklch(0.82 0.12 85);
+  --color-primary-foreground: oklch(0.18 0.03 270);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(at 15% 15%, oklch(0.28 0.06 280 / 0.4) 0px, transparent 60%),
+      radial-gradient(at 85% 85%, oklch(0.25 0.06 240 / 0.3) 0px, transparent 60%);
+    background-attachment: fixed;
+  }
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Astrological custom look and scrollbars */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 99px;
+}
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
+
+.animate-spin-slow {
+  animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Simple fade animations */
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.select-astrology option {
+  background-color: oklch(0.22 0.04 270);
+  color: oklch(0.95 0.01 90);
+}
+
+/* Promise outcome glowing accents */
+.pr-promise-glow {
+  position: relative;
+}
+.pr-promise-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  border-radius: 0 8px 8px 0;
+  background-color: currentColor;
+  opacity: 0.8;
+}
